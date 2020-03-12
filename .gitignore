@@ -9,6 +9,5 @@ shud
 cmaes_out*
 RDS
 RDS/*
-Forcing/
-
-
+output
+.DS_Store
