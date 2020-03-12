@@ -14,7 +14,7 @@ The Cache Creek Watershed (CCW) is a headwater catchment with area $196.4 km^2$ 
 
 ![sac5_map](Fig/sac5/sac5_map.png)
 
-According to NLDAS-2, between 2000 and 2017 the mean temperature and precipitation was $12.8 ^\circ C$ and $\approx 817 mm​$, respectively, in this catchment. Precipitation is unevenly distributed through the year, with winter and spring precipitation being the vast majority of the contribution to the annual total (Fig. \ref{fig:sh_pt}.
+According to NLDAS-2, between 2000 and 2017 the mean temperature and precipitation was $12.8 ^\circ C$ and $\approx 817 mm$, respectively, in this catchment. Precipitation is unevenly distributed through the year, with winter and spring precipitation being the vast majority of the contribution to the annual total (Fig. \ref{fig:sh_pt}.
 
 ![sac5_PT](Fig/sac5/sac5_PT.png)
 
@@ -22,7 +22,7 @@ According to NLDAS-2, between 2000 and 2017 the mean temperature and precipitati
 
 Our simulation in CCW covers the period from 2000 to 2007. Because of the Mediterranean climate in this region, the simulation starts in summer to ensure adequate time before the October start to the water year. In our experiment, the first year (2000-06-01 to 2001-06-30) is the spin-up period, the following two years (2001-07-01 to 2003-06-30 ) are the calibration period, and the period from 2003-07-01 to 2007-07-01 is for validation.
 
-The unstructured domain of the CCW (Fig. \ref{fig:sh} (d)) is built with SHUDtoolbox, a R package on GitHub ([SHUDtoolbox]( https://github.com/shud-system/SHUDtoolbox)). The number of triangular elements is 1147, with a mean area of $ 0.17 km^2​$. The total length of the river network is $126.5 km​$ and consists of 103 river reaches and in which the highest order of stream is 4. With a calibrated parameter set, the SHUD model tooks 5 hours to simulate 17 years in the CCW, with a non-parallel configuration (OpenMP is disabled on *Mac Pro 2013 Xeon 2.7GHz, 32GB RAM*).
+The unstructured domain of the CCW (Fig. \ref{fig:sh} (d)) is built with SHUDtoolbox, a R package on GitHub ([SHUDtoolbox]( https://github.com/shud-system/SHUDtoolbox)). The number of triangular elements is 1147, with a mean area of $ 0.17 km^2$. The total length of the river network is $126.5 km$ and consists of 103 river reaches and in which the highest order of stream is 4. With a calibrated parameter set, the SHUD model tooks 5 hours to simulate 17 years in the CCW, with a non-parallel configuration (OpenMP is disabled on *Mac Pro 2013 Xeon 2.7GHz, 32GB RAM*).
 
 ## Results
 
@@ -45,4 +45,34 @@ Figure \ref{fig:sh_gw} illustrates the annual mean groundwater table in the vali
 
 
 ![sac5_wb](Fig/sac5/sac5_wb.png)
+
+- 
+
+## How to compile (Linux and Mac)
+
+**Step 1: Install SUNDIALS/CVODE:**
+
+```
+./configure
+```
+
+This configure is to download teh SUNDIALS from GitHub and install it on your 
+
+**Step 2: Compile SHUD with gcc**
+
+```
+make clean
+make shud
+
+```
+
+**Step 3: Run the Cache Creek Watershed example**
+
+```
+./shud ccw
+```
+
+**Step4: Analysis the results of modeling.**
+
+The output files from the SHUD model is save in `./output/ccw.out`.  The R package, SHUDtoolbox, helps to load the input/output files of SHUD. More details about prepare SHUD data, model input/output and visualization is available in SHUD website (https://www.shud.xyz) and help information of SHUDtoolbox.
 
